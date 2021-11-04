@@ -9,7 +9,6 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
   const [inputTodo, setInputTodo] = useState("");
   const [checkedTodo, setCheckedTodo] = useState(true);
   const [checkedImp, setCheckedImp] = useState(false);
-  // const [value, setValue] = useState("");
   const todo = {
     importantTodo: {
       text: inputTodo,
@@ -44,26 +43,24 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    console.log(e.currentTarget);
-    // const { importantTodo, notImportantTodo } = todo;
+    const { importantTodo, notImportantTodo } = todo;
 
-    // switch (e.currentTarget.value) {
-    //   case "important":
-    //     onSubmit(importantTodo);
-    //     takeTodo(importantTodo);
-    //     setInputTodo("");
-    //     toggleModal();
-    //     break;
-    //   case "notImportant":
-    //     onSubmit(notImportantTodo);
-    //     takeTodo(notImportantTodo);
-    //     setInputTodo("");
-    //     toggleModal();
-    //     break;
-    //   default:
-    //     alert("in progress...");
-    // }
+    switch (checkedTodo) {
+      case false:
+        onSubmit(importantTodo);
+        takeTodo(importantTodo);
+        setInputTodo("");
+        toggleModal();
+        break;
+      case true:
+        onSubmit(notImportantTodo);
+        takeTodo(notImportantTodo);
+        setInputTodo("");
+        toggleModal();
+        break;
+      default:
+        alert("in progress...");
+    }
   };
 
   /* ---------------------------Вариант с кнопками---------------------------- */
@@ -90,7 +87,7 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
   // };
 
   return (
-    <form className="form" onClick={onFormSubmit}>
+    <form className="form" onSubmit={onFormSubmit}>
       <label className="form__label" htmlFor={todoId}></label>
       <input
         id={todoId}
@@ -110,7 +107,6 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
         value="important"
         id={todoChek}
         checked={checkedTodo}
-        // disabled={checkedImp}
         onChange={handleChecChange}
       />
 
@@ -123,7 +119,6 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
         value="notImportatnt"
         id={todoCheckImp}
         checked={checkedImp}
-        // disabled={checkedTodo}
         onChange={handleChecChange}
       />
 
@@ -143,9 +138,7 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
       >
         Not importatnt tasks
       </button> */}
-      <button type="submit" disabled={!checkedImp && !checkedTodo}>
-        Add todo
-      </button>
+      <button type="submit">Add todo</button>
     </form>
   );
 }

@@ -20,7 +20,9 @@ export default function App() {
   const [cTodos, setCTodos] = useState(
     () => JSON.parse(window.localStorage.getItem("cTodos")) ?? []
   );
-  const [defaultTodos, setDefaultTodos] = useState([]);
+  const [defaultTodos, setDefaultTodos] = useState(
+    () => JSON.parse(window.localStorage.getItem("defaultTodos")) ?? []
+  );
 
   const onSubmit = (todo) => {
     switch (todo.importance) {
