@@ -12,7 +12,6 @@ export default function Modal({ children, toggleModal }) {
 
   const handleEsc = (e) => {
     let condition = e.code === "Escape";
-    console.log(condition);
     if (condition) {
       toggleModal();
     }

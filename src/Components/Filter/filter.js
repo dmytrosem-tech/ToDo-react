@@ -5,7 +5,7 @@ export default function Filter({ inputFilter, onChange }) {
 
   return (
     <div className="filter">
-      <h3 className="filter__title">Filter todos by text</h3>
+      <h3 className="filter__title">Filter todos by content</h3>
       <label className="filter__label" htmlFor={inputFilterId}>
         <input
           id={inputFilterId}
