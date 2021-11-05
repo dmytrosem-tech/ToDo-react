@@ -5,7 +5,7 @@ export default function Navigation() {
     <nav>
       <NavLink
         exact="true"
-        to="/"
+        to="/todo-react"
         className="link"
         activeclassname="active__link"
       >
@@ -13,7 +13,7 @@ export default function Navigation() {
       </NavLink>
       <NavLink
         exact="true"
-        to="/daily"
+        to="/todo-react/daily"
         className="link"
         activeclassname="active__link"
       >
@@ -21,7 +21,7 @@ export default function Navigation() {
       </NavLink>
       <NavLink
         exact="true"
-        to="/completed"
+        to="/todo-react/completed"
         className="link"
         activeclassname="active__link"
       >

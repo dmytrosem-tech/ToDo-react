@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuid } from "uuid";
+import styles from "./ToDoForm.module.css";
 
 export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
   const todoId = uuid();
@@ -42,7 +43,7 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
   };
 
   const onFormSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const { importantTodo, notImportantTodo } = todo;
 
     switch (checkedTodo) {
@@ -61,6 +62,9 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
       default:
         alert("in progress...");
     }
+  };
+  const onClickCloseBtn = () => {
+    toggleModal();
   };
 
   /* ---------------------------Вариант с кнопками---------------------------- */
@@ -85,42 +89,65 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
   //       alert("in progress...");
   //   }
   // };
-
+  const {
+    modal__closeBtn,
+    form,
+    form__input,
+    form__label,
+    form__btnAdd,
+    form__checkBox,
+    form__checkTodo,
+    form__checked,
+  } = styles;
   return (
-    <form className="form" onSubmit={onFormSubmit}>
+    <form className={form} onSubmit={onFormSubmit}>
+      <button
+        className={modal__closeBtn}
+        type="button"
+        onClick={onClickCloseBtn}
+      >
+        X
+      </button>
       <label className="form__label" htmlFor={todoId}></label>
       <input
         id={todoId}
-        className="todo__input"
+        className={form__input}
         type="text"
         value={inputTodo}
         placeholder="write a task"
         onChange={handleChange}
       ></input>
+      <div className={form__checkBox}>
+        <div className={form__checkTodo}>
+          <label className={form__label} htmlFor={todoChek}>
+            Todo
+          </label>
+          <input
+            className={form__checked}
+            type="checkbox"
+            name="notImportant"
+            value="important"
+            id={todoChek}
+            checked={checkedTodo}
+            onChange={handleChecChange}
+          />
+        </div>
 
-      <label htmlFor={todoChek} className="checkImpLabel">
-        Todo
-      </label>
-      <input
-        type="checkbox"
-        name="notImportant"
-        value="important"
-        id={todoChek}
-        checked={checkedTodo}
-        onChange={handleChecChange}
-      />
-
-      <label htmlFor={todoCheckImp} className="checkImpLabel">
-        Important Todo!
-      </label>
-      <input
-        type="checkbox"
-        name="important"
-        value="notImportatnt"
-        id={todoCheckImp}
-        checked={checkedImp}
-        onChange={handleChecChange}
-      />
+        <div className={form__checkTodo}>
+          <label className={form__label} htmlFor={todoCheckImp}>
+            Important Todo!
+          </label>
+          <input
+            className={form__checked}
+            type="checkbox"
+            name="important"
+            value="notImportatnt"
+            id={todoCheckImp}
+            checked={checkedImp}
+            onChange={handleChecChange}
+          />
+        </div>
+      </div>
 
       {/* <button
         type="button"
@@ -138,7 +165,9 @@ export default function ToDoForm({ onSubmit, toggleModal, takeTodo }) {
       >
         Not importatnt tasks
       </button> */}
-      <button type="submit">Add todo</button>
+      <button className={form__btnAdd} type="submit">
+        Add
+      </button>
     </form>
   );
 }

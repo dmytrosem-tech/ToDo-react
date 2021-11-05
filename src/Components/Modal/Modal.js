@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
+import PropTypes from "prop-types";
 import styles from "./Modal.module.css";
 
 export default function Modal({ children, toggleModal }) {
@@ -21,19 +22,17 @@ export default function Modal({ children, toggleModal }) {
     if (e.currentTarget === e.target) toggleModal();
   };
 
-  const onClickCloseBtn = () => {
-    toggleModal();
-  };
-
   const { modal__backDrop, modal__content } = styles;
   return createPortal(
     <div className={modal__backDrop} onClick={handleClose}>
       <div className={modal__content}>{children}</div>
-      <button type="button" onClick={onClickCloseBtn}>
-        close modal
-      </button>
     </div>,
 
     document.getElementById("modalRoot")
   );
 }
+
+Modal.propTypes = {
+  children: PropTypes.any,
+  toggleModal: PropTypes.func,
+};

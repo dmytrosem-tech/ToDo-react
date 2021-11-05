@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useToggle } from "./hooks/useToggle";
 import ToDoForm from "./Components/ToDoForm";
@@ -115,7 +114,7 @@ export default function App() {
         <Routes>
           <Route
             exact
-            path="/"
+            path="/todo-react"
             element={
               <ImportantToDosList
                 iTodos={getFilteredTD(iTodos)}
@@ -126,7 +125,7 @@ export default function App() {
           />
 
           <Route
-            path="/daily"
+            path="/todo-react/daily"
             element={
               <ToDosList
                 todos={getFilteredTD(todos)}
@@ -137,7 +136,7 @@ export default function App() {
           />
 
           <Route
-            path="/completed"
+            path="/todo-react/completed"
             element={
               <ComletedTodosList
                 cTodos={getFilteredTD(cTodos)}
