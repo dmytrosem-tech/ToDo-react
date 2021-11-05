@@ -1,14 +1,32 @@
 import { useEffect, useState } from "react";
+import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 import { useToggle } from "./hooks/useToggle";
 import ToDoForm from "./Components/ToDoForm";
 import Container from "./Components/Container";
+import Navigation from "./Components/Navigation";
 import Filter from "./Components/Filter";
-import ToDosList from "./Components/ToDosList";
-import ImportantToDosList from "./Components/ImportantTodoList/ImportantTodoList";
-import ComletedTodosList from "./Components/CompletedTodosList";
 import Modal from "./Components/Modal";
+// import ToDosList from "./Components/ToDosList";
+// import ImportantToDosList from "./Components/ImportantTodoList/ImportantTodoList";
+// import ComletedTodosList from "./Components/CompletedTodosList";
+
+const ImportantToDosList = lazy(() =>
+  import(
+    "./Components/ImportantTodoList" /* webpackChunkName: "ImportantTodos" */
+  )
+);
+const ToDosList = lazy(() =>
+  import("./Components/ToDosList" /* webpackChunkName: "ToDosList" */)
+);
+const ComletedTodosList = lazy(() =>
+  import(
+    "./Components/CompletedTodosList" /* webpackChunkName: "CompletedTodos" */
+  )
+);
 
 export default function App() {
+  /* -------------------------------------------state-------------------------------------------------- */
   const [showModal, setShowModal] = useToggle(false);
   const [inputFilter, setInputFilter] = useState("");
   const [iTodos, setITodos] = useState(
@@ -24,6 +42,7 @@ export default function App() {
     () => JSON.parse(window.localStorage.getItem("defaultTodos")) ?? []
   );
 
+  /*---------------------------------------------metods------------------------------------------------------ */
   const onSubmit = (todo) => {
     switch (todo.importance) {
       case "high":
@@ -39,7 +58,6 @@ export default function App() {
   const takeDefaultTodo = (todo) => {
     setDefaultTodos((prev) => [todo, ...prev]);
   };
-
   const deleteTodo = (todoId) => {
     setTodos(todos.filter((todo) => todoId !== todo.id));
     setITodos(iTodos.filter((todo) => todoId !== todo.id));
@@ -54,32 +72,15 @@ export default function App() {
       ...prev,
     ]);
   };
-
   const onFilterSearch = (e) => {
     setInputFilter(e.currentTarget.value);
   };
-
-  const getFilteredTodos = () => {
+  const getFilteredTD = (arrayOfTodos) => {
     const filteredInputSearch = inputFilter.toLowerCase();
-    return todos.filter((todo) =>
+    return arrayOfTodos.filter((todo) =>
       todo.text.toLowerCase().includes(filteredInputSearch)
     );
   };
-  const getFilteredITodos = () => {
-    const filteredInputSearch = inputFilter.toLowerCase();
-    return iTodos.filter((todo) =>
-      todo.text.toLowerCase().includes(filteredInputSearch)
-    );
-  };
-  const getFilteredCTodos = () => {
-    console.log(cTodos);
-    const filteredInputSearch = inputFilter.toLowerCase();
-    return cTodos.filter((todo) => {
-      console.log(todo);
-      // return todo.text.toLowerCase().includes(filteredInputSearch);
-    });
-  };
-
   useEffect(() => {
     window.localStorage.setItem("todos", JSON.stringify(todos));
     window.localStorage.setItem("iTodos", JSON.stringify(iTodos));
@@ -87,6 +88,7 @@ export default function App() {
     window.localStorage.setItem("defaultTodos", JSON.stringify(defaultTodos));
   }, [todos, iTodos, cTodos, defaultTodos]);
 
+  /*-------------------------------------------render-------------------------------------------------------*/
   return (
     <Container title="What you wanna to do? ;)">
       {showModal && (
@@ -98,11 +100,62 @@ export default function App() {
           />
         </Modal>
       )}
+
       <button type="button" onClick={setShowModal}>
         Add todo
       </button>
+
+      <Navigation />
+
+      <h3>TODOS</h3>
+
       <Filter onChange={onFilterSearch} inputFilter={inputFilter} />
-      <ImportantToDosList
+
+      <Suspense fallback="Do not be so fast :)">
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <ImportantToDosList
+                iTodos={getFilteredTD(iTodos)}
+                deleteTodo={deleteTodo}
+                removeTodo={removeToCompleted}
+              />
+            }
+          />
+
+          <Route
+            path="/daily"
+            element={
+              <ToDosList
+                todos={getFilteredTD(todos)}
+                deleteTodo={deleteTodo}
+                removeTodo={removeToCompleted}
+              />
+            }
+          />
+
+          <Route
+            path="/completed"
+            element={
+              <ComletedTodosList
+                cTodos={getFilteredTD(cTodos)}
+                deleteTodo={deleteTodo}
+                removeTodo={removeToCompleted}
+              />
+            }
+          />
+
+          <Route element={<p>sorry</p>} />
+        </Routes>
+      </Suspense>
+    </Container>
+  );
+}
+
+/*-----------------------------------variant of render without routes--------------------------*/
+/* <ImportantToDosList
         iTodos={getFilteredITodos()}
         deleteTodo={deleteTodo}
         removeTodo={removeToCompleted}
@@ -116,7 +169,4 @@ export default function App() {
         cTodos={cTodos}
         deleteTodo={deleteTodo}
         removeTodo={removeToCompleted}
-      />
-    </Container>
-  );
-}
+      /> */
