@@ -1,23 +1,35 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-04-hooks-phonebook/static/css/main.a3dbfa16.chunk.css",
-    "main.js": "/goit-react-hw-04-hooks-phonebook/static/js/main.d2f7921f.chunk.js",
-    "main.js.map": "/goit-react-hw-04-hooks-phonebook/static/js/main.d2f7921f.chunk.js.map",
-    "runtime-main.js": "/goit-react-hw-04-hooks-phonebook/static/js/runtime-main.05aa2fb4.js",
-    "runtime-main.js.map": "/goit-react-hw-04-hooks-phonebook/static/js/runtime-main.05aa2fb4.js.map",
-    "static/css/2.bc922b9c.chunk.css": "/goit-react-hw-04-hooks-phonebook/static/css/2.bc922b9c.chunk.css",
-    "static/js/2.b9252179.chunk.js": "/goit-react-hw-04-hooks-phonebook/static/js/2.b9252179.chunk.js",
-    "static/js/2.b9252179.chunk.js.map": "/goit-react-hw-04-hooks-phonebook/static/js/2.b9252179.chunk.js.map",
-    "index.html": "/goit-react-hw-04-hooks-phonebook/index.html",
-    "static/css/2.bc922b9c.chunk.css.map": "/goit-react-hw-04-hooks-phonebook/static/css/2.bc922b9c.chunk.css.map",
-    "static/css/main.a3dbfa16.chunk.css.map": "/goit-react-hw-04-hooks-phonebook/static/css/main.a3dbfa16.chunk.css.map",
-    "static/js/2.b9252179.chunk.js.LICENSE.txt": "/goit-react-hw-04-hooks-phonebook/static/js/2.b9252179.chunk.js.LICENSE.txt"
+    "CompletedTodos.css": "/todo-react/static/css/CompletedTodos.afd7172b.chunk.css",
+    "CompletedTodos.js": "/todo-react/static/js/CompletedTodos.099ab088.chunk.js",
+    "CompletedTodos.js.map": "/todo-react/static/js/CompletedTodos.099ab088.chunk.js.map",
+    "ImportantTodos.css": "/todo-react/static/css/ImportantTodos.0d216ee0.chunk.css",
+    "ImportantTodos.js": "/todo-react/static/js/ImportantTodos.b12a3ad7.chunk.js",
+    "ImportantTodos.js.map": "/todo-react/static/js/ImportantTodos.b12a3ad7.chunk.js.map",
+    "ToDosList.css": "/todo-react/static/css/ToDosList.0d216ee0.chunk.css",
+    "ToDosList.js": "/todo-react/static/js/ToDosList.a78e9e3b.chunk.js",
+    "ToDosList.js.map": "/todo-react/static/js/ToDosList.a78e9e3b.chunk.js.map",
+    "main.css": "/todo-react/static/css/main.1bcfd63a.chunk.css",
+    "main.js": "/todo-react/static/js/main.1855df3c.chunk.js",
+    "main.js.map": "/todo-react/static/js/main.1855df3c.chunk.js.map",
+    "runtime-main.js": "/todo-react/static/js/runtime-main.1ff60c11.js",
+    "runtime-main.js.map": "/todo-react/static/js/runtime-main.1ff60c11.js.map",
+    "static/css/5.bc922b9c.chunk.css": "/todo-react/static/css/5.bc922b9c.chunk.css",
+    "static/js/5.ba115bec.chunk.js": "/todo-react/static/js/5.ba115bec.chunk.js",
+    "static/js/5.ba115bec.chunk.js.map": "/todo-react/static/js/5.ba115bec.chunk.js.map",
+    "index.html": "/todo-react/index.html",
+    "static/css/5.bc922b9c.chunk.css.map": "/todo-react/static/css/5.bc922b9c.chunk.css.map",
+    "static/css/CompletedTodos.afd7172b.chunk.css.map": "/todo-react/static/css/CompletedTodos.afd7172b.chunk.css.map",
+    "static/css/ImportantTodos.0d216ee0.chunk.css.map": "/todo-react/static/css/ImportantTodos.0d216ee0.chunk.css.map",
+    "static/css/ToDosList.0d216ee0.chunk.css.map": "/todo-react/static/css/ToDosList.0d216ee0.chunk.css.map",
+    "static/css/main.1bcfd63a.chunk.css.map": "/todo-react/static/css/main.1bcfd63a.chunk.css.map",
+    "static/js/5.ba115bec.chunk.js.LICENSE.txt": "/todo-react/static/js/5.ba115bec.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.05aa2fb4.js",
-    "static/css/2.bc922b9c.chunk.css",
-    "static/js/2.b9252179.chunk.js",
-    "static/css/main.a3dbfa16.chunk.css",
-    "static/js/main.d2f7921f.chunk.js"
+    "static/js/runtime-main.1ff60c11.js",
+    "static/css/5.bc922b9c.chunk.css",
+    "static/js/5.ba115bec.chunk.js",
+    "static/css/main.1bcfd63a.chunk.css",
+    "static/js/main.1855df3c.chunk.js"
   ]
 }

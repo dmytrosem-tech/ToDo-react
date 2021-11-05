@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/Todo/Todo.module.css"],"names":[],"mappings":"AAAA,4BACE,YACF","file":"ImportantTodos.0d216ee0.chunk.css","sourcesContent":[".todoList__item {\r\n  display: flex;\r\n}\r\n"]}
