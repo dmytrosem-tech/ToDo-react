@@ -89,24 +89,26 @@ export default function App() {
 
   /*-------------------------------------------render-------------------------------------------------------*/
   return (
-    <Container title="What you wanna to do? ;)">
-      {showModal && (
-        <Modal toggleModal={setShowModal}>
-          <ToDoForm
-            toggleModal={setShowModal}
-            onSubmit={onSubmit}
-            takeTodo={takeDefaultTodo}
-          />
-        </Modal>
-      )}
-
-      <button type="button" onClick={setShowModal}>
-        Add todo
-      </button>
+    <Container>
+      <div className="addBlock">
+        <h1 className="title">What you wanna to do? ;)</h1>
+        {showModal && (
+          <Modal toggleModal={setShowModal}>
+            <ToDoForm
+              toggleModal={setShowModal}
+              onSubmit={onSubmit}
+              takeTodo={takeDefaultTodo}
+            />
+          </Modal>
+        )}
+        <button className="btnAdd" type="button" onClick={setShowModal}>
+          Add todo
+        </button>
+      </div>
 
       <Navigation />
 
-      <h3>TODOS</h3>
+      <h3 className="title2">TODOS</h3>
 
       <Filter onChange={onFilterSearch} inputFilter={inputFilter} />
 
